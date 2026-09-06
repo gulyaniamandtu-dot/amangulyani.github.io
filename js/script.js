@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPhotoLightbox();
   initEmailCopy();
   initBackToTop();
+  initGalleryAutoScroll();
 });
 
 /* ==========================================================================
@@ -346,4 +347,93 @@ function initBackToTop() {
       behavior: 'smooth'
     });
   });
+}
+
+/* ==========================================================================
+   9. Conferences Gallery Auto-Scroll
+   ========================================================================== */
+function initGalleryAutoScroll() {
+  const scrollWrapper = document.getElementById('gallery-scroll');
+  const grid = document.getElementById('gallery-grid');
+  if (!scrollWrapper || !grid) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
+  let autoScrollTimer = null;
+  let isUserInteracting = false;
+
+  function getCardWidth() {
+    const card = grid.querySelector('.gallery-card');
+    if (!card) return 300;
+    const style = getComputedStyle(card);
+    const gap = parseFloat(style.marginRight) || 20;
+    return card.offsetWidth + gap;
+  }
+
+  function startAutoScroll() {
+    stopAutoScroll();
+    autoScrollTimer = setInterval(() => {
+      if (isUserInteracting) return;
+      
+      const scrollAmount = getCardWidth();
+      const maxScroll = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+      let nextScroll = scrollWrapper.scrollLeft + scrollAmount;
+      
+      if (nextScroll >= maxScroll - 10) {
+        nextScroll = 0; // Loop back to start
+      }
+      
+      scrollWrapper.scrollTo({
+        left: nextScroll,
+        behavior: 'smooth'
+      });
+    }, 3000);
+  }
+
+  function stopAutoScroll() {
+    if (autoScrollTimer) {
+      clearInterval(autoScrollTimer);
+      autoScrollTimer = null;
+    }
+  }
+
+  // Pause on user interaction
+  const pauseEvents = ['pointerdown', 'wheel', 'touchstart'];
+  pauseEvents.forEach(evt => {
+    scrollWrapper.addEventListener(evt, () => { 
+      isUserInteracting = true; 
+      stopAutoScroll(); 
+    }, { passive: true });
+  });
+  
+  // Resume after interaction ends
+  const resumeEvents = ['pointerup', 'pointerleave', 'touchend', 'mouseleave'];
+  resumeEvents.forEach(evt => {
+    scrollWrapper.addEventListener(evt, () => {
+      isUserInteracting = false;
+      setTimeout(startAutoScroll, 2000); // Resume after 2s pause
+    }, { passive: true });
+  });
+
+  // Also pause when tab is hidden
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoScroll();
+    else startAutoScroll();
+  });
+
+  // Pause when lightbox is open
+  const modal = document.getElementById('lightbox-modal');
+  if (modal) {
+    const observer = new MutationObserver(() => {
+      if (modal.classList.contains('active')) {
+        stopAutoScroll();
+      } else if (!isUserInteracting) {
+        startAutoScroll();
+      }
+    });
+    observer.observe(modal, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  startAutoScroll();
 }

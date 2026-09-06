@@ -108,40 +108,42 @@
           </p>
 
           <!-- Primary CTAs -->
-          <div class="hero-actions">
+          <div class="hero-actions" role="group" aria-label="Primary actions">
             <!-- LinkedIn Button -->
-            <a href="https://www.linkedin.com/in/aman-gulyani-a6665677/" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin" id="hero-linkedin-btn">
+            <a href="https://www.linkedin.com/in/aman-gulyani-a6665677/" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin btn-icon" id="hero-linkedin-btn" aria-label="View LinkedIn profile">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
-              <span>LinkedIn</span>
+              <span class="btn-text">LinkedIn</span>
             </a>
 
-            <!-- View & Download Resume Buttons -->
-            <a href="images/Aman_Gulyani_Resume_.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="hero-resume-btn" title="Open Resume PDF in new tab">
+            <!-- View Resume Button -->
+            <a href="images/Aman_Gulyani_Resume_.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-icon" id="hero-resume-btn" aria-label="View Resume PDF in new tab">
               <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
-              <span>View Resume</span>
+              <span class="btn-text">View Resume</span>
             </a>
-            <a href="images/Aman_Gulyani_Resume_.pdf" download="Aman_Gulyani_Resume_.pdf" class="btn btn-secondary" id="hero-download-btn" title="Download Resume PDF directly">
+            
+            <!-- Download Resume Button -->
+            <a href="images/Aman_Gulyani_Resume_.pdf" download="Aman_Gulyani_Resume_.pdf" class="btn btn-secondary btn-icon" id="hero-download-btn" aria-label="Download Resume PDF directly">
               <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
               </svg>
-              <span>Download PDF</span>
+              <span class="btn-text">Download PDF</span>
             </a>
 
             <!-- YouTube Video Tutorial Link -->
-            <a href="https://youtu.be/aPTEL7nlNqg?si=HIiScCaSl9OP8VqL" target="_blank" rel="noopener noreferrer" class="btn btn-youtube" id="hero-youtube-btn" title="Watch YouTube AdTech Tutorials">
+            <a href="https://youtu.be/aPTEL7nlNqg?si=HIiScCaSl9OP8VqL" target="_blank" rel="noopener noreferrer" class="btn btn-youtube btn-icon" id="hero-youtube-btn" aria-label="Watch YouTube AdTech Tutorials">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
-              <span>YouTube Tutorials</span>
+              <span class="btn-text">YouTube Tutorials</span>
             </a>
 
             <!-- Jump to Experience Link -->
-            <a href="#experience" class="btn btn-secondary">
-              <span>Experience</span>
+            <a href="#experience" class="btn btn-secondary btn-icon" aria-label="Jump to Experience section">
+              <span class="btn-text">Experience</span>
               <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
@@ -212,12 +214,13 @@
     <section id="conferences" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-tag">Keynotes & Industry Summits</span>
-          <h2 class="section-title">Conferences & Speaking</h2>
-          <p class="section-subtitle">Keynotes, seller growth summits, and feature launch presentations delivered across India. Click any photo to open full-screen viewer.</p>
+          <span class="section-tag">Conference Appearances</span>
+          <h2 class="section-title">Conferences</h2>
+          <p class="section-subtitle">Swipe or scroll to explore. Click any photo to open full-screen viewer.</p>
         </div>
 
-        <div class="gallery-grid">
+        <div class="gallery-scroll-wrapper" id="gallery-scroll">
+          <div class="gallery-grid" id="gallery-grid">
           <!-- EVENT 1: MYNTRA SELLER GROWTH (DELHI) -->
           <div class="gallery-card reveal" data-full-image="images/conf-seller-growth-connect.jpg">
             <div class="gallery-image-wrapper">
@@ -349,7 +352,15 @@
               <p class="gallery-desc">Guiding audience through the three-step framework for visibility: Exact/Phrase Match Types, Ad Group Bidding, and Top-of-Search placement tuning.</p>
             </div>
           </div>
-        </div>
+          </div>
+
+          <!-- Scroll hint for horizontal scroll -->
+          <div class="gallery-scroll-hint" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            <span>Swipe to explore</span>
+          </div>
 
         <!-- Featured YouTube Video Tutorial Banner -->
         <div class="youtube-spotlight-card reveal">
