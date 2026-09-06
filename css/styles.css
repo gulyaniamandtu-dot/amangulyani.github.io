@@ -1579,34 +1579,25 @@ button {
     margin-bottom: 1.35rem;
   }
   .hero-actions {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 0.4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
     margin-bottom: 0.5rem;
-    padding-bottom: 0.25rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .hero-actions::-webkit-scrollbar {
-    display: none;
+    width: 100%;
   }
   .hero-actions .btn {
-    padding: 0.45rem 0.7rem;
-    font-size: 0.8rem;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.78rem;
     gap: 0.35rem;
     border-radius: var(--radius-sm);
-    flex-shrink: 0;
-    scroll-snap-align: start;
+    justify-content: center;
   }
   .hero-actions .btn svg {
     width: 16px;
     height: 16px;
   }
   .hero-actions .btn-icon .btn-text {
-    display: none !important;
+    display: inline !important;
   }
   .headshot-card {
     max-width: 220px;
